@@ -1,25 +1,33 @@
 const { db, DataTypes } = require('../utils/database.util');
 
-const Registration = db.define('registration', {
+const Task = db.define('task', {
 	id: {
 		type: DataTypes.INTEGER,
 		primaryKey: true,
 		autoIncrement: true,
 		allowNull: false,
 	},
-	entranceTime: {
+	userId: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+	},
+	limitDate: {
 		type: DataTypes.DATE,
 		allowNull: false,
 	},
-	exitTime: {
+	startDate: {
 		type: DataTypes.STRING,
 		allowNull: true,
 	},
-	status: {
+	finishDate: {
+		type: DataTypes.STRING,
+		allowNull: true,
+	},
+		status: {
 		type: DataTypes.STRING,
 		allowNull: false,
 		defaultValue: 'active',
 	},
 });
 
-module.exports = { Registration };
+module.exports = { Task };
