@@ -1,24 +1,31 @@
 const { db, DataTypes } = require("../utils/database.util");
 
-const User = db.define("user", {
+const Task = db.define("task", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
   },
-  name: {
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  title: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
+  limitDate: {
+    type: DataTypes.DATE,
+    allowNull: true,
   },
-  password: {
+  startDate: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
+  },
+  finishDate: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   status: {
     type: DataTypes.STRING,
@@ -27,4 +34,4 @@ const User = db.define("user", {
   },
 });
 
-module.exports = { User };
+module.exports = { Task };
